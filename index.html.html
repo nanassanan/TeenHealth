@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeenHealth | Healthy Lifestyle</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fffaf3;
+    color: #35443f;
+    line-height: 1.7;
+}
+
+header {
+    background: linear-gradient(120deg, #194d43, #367d68);
+    color: white;
+    padding: 22px 8%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: -1px;
+}
+
+.logo span { color: #f6d477; }
+
+.header-tag {
+    font-size: 12px;
+    color: #e4f5e9;
+}
+
+nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: white;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 3px 15px #00000008;
+}
+
+nav button {
+    border: none;
+    background: transparent;
+    padding: 10px 18px;
+    border-radius: 30px;
+    color: #47665c;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+nav button:hover,
+nav button.selected {
+    background: #fff0cc;
+    color: #a96d24;
+}
+
+.page {
+    display: none;
+    max-width: 1150px;
+    margin: auto;
+    padding: 45px 25px;
+}
+
+.page.active { display: block; }
+
+.hero {
+    background: linear-gradient(120deg, #fff0c9, #e5f5e9, #fce5df);
+    border-radius: 30px;
+    padding: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    overflow: hidden;
+}
+
+.hero-text { max-width: 570px; }
+
+.hero h1 {
+    font-size: clamp(35px, 5vw, 55px);
+    line-height: 1.15;
+    color: #164c3d;
+    margin: 18px 0;
+    letter-spacing: -2px;
+}
+
+.hero p {
+    color: #52736a;
+    margin-bottom: 25px;
+}
+
+.hero-art {
+    min-width: 320px;
+    max-width: 390px;
+    width: 40%;
+}
+
+.hero-art svg {
+    width: 100%;
+    height: auto;
+}
+
+.eyebrow {
+    background: #ffedbd;
+    color: #9b671e;
+    padding: 7px 15px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.main-btn {
+    background: #e99b48;
+    color: white;
+    padding: 14px 23px;
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+.main-btn:hover {
+    background: #cf8030;
+    transform: translateY(-2px);
+}
+
+.section-heading { margin: 45px 0 20px; }
+
+.section-heading h2 {
+    font-size: 28px;
+    color: #315c4b;
+    letter-spacing: -1px;
+}
+
+.section-heading p {
+    color: #789087;
+    font-size: 14px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 22px;
+    box-shadow: 0 5px 25px #164c3d0a;
+    border: 1px solid #f1e8dc;
+    margin-bottom: 18px;
+}
+
+.card h3 {
+    margin: 12px 0;
+    color: #245b49;
+}
+
+.card p {
+    color: #6c8178;
+    font-size: 14px;
+}
+
+.icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 34px;
+}
+
+.grid .card:nth-child(1) .icon { background: #fff0ce; }
+.grid .card:nth-child(2) .icon { background: #fce2df; }
+.grid .card:nth-child(3) .icon { background: #e4efff; }
+.grid .card:nth-child(4) .icon { background: #eee6ff; }
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.step {
+    background: white;
+    border-radius: 18px;
+    padding: 20px 12px;
+    text-align: center;
+    border: 1px solid #eee8dc;
+}
+
+.step strong {
+    display: block;
+    color: #d58b37;
+    font-size: 23px;
+}
+
+/* ILUSTRASI REMAJA */
+
+.people-card {
+    background: linear-gradient(120deg, #fce5df, #f5edff, #e5f2ff);
+    border-radius: 25px;
+    padding: 25px;
+    margin: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.people-text {
+    max-width: 350px;
+}
+
+.people-text h2 {
+    color: #315c4b;
+    font-size: 27px;
+    line-height: 1.3;
+    margin: 12px 0;
+}
+
+.people-text p {
+    color: #61766f;
+    font-size: 14px;
+}
+
+.people-art {
+    width: 55%;
+    max-width: 480px;
+}
+
+.people-art svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* TOMBOL START */
+
+.start-section {
+    text-align: center;
+    background: linear-gradient(120deg, #fff0cc, #fce5df);
+    border-radius: 25px;
+    padding: 35px 20px;
+    margin-top: 30px;
+}
+
+.start-section h2 {
+    color: #315c4b;
+    font-size: 27px;
+    margin-bottom: 8px;
+}
+
+.start-section p {
+    color: #71847b;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.start-btn {
+    background: #e99b48;
+    color: white;
+    padding: 16px 30px;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.start-btn:hover {
+    background: #cf8030;
+    transform: translateY(-3px);
+}
+
+/* CALCULATOR */
+
+.page-title { margin-bottom: 25px; }
+
+.page-title h1 {
+    color: #164c3d;
+    font-size: 34px;
+}
+
+.page-title p { color: #789087; }
+
+.form-card {
+    max-width: 700px;
+    margin: auto;
+}
+
+label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: bold;
+    color: #31594b;
+    font-size: 14px;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #dceae2;
+    border-radius: 12px;
+    font-size: 15px;
+    background: #fbfdfb;
+    color: #243b36;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: #e99b48;
+}
+
+.form-card .main-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.result {
+    background: #fff8e9;
+    border: 1px solid #f2e3c5;
+    padding: 25px;
+    border-radius: 20px;
+    margin-top: 25px;
+}
+
+.result h2 { color: #d58b37; }
+
+.result h3 {
+    color: #456b8c;
+    margin: 20px 0 8px;
+}
+
+.result ul {
+    padding-left: 22px;
+    color: #526c61;
+}
+
+.result li { margin: 7px 0; }
+
+.result hr {
+    border: 0;
+    border-top: 1px solid #eadfc9;
+    margin: 20px 0;
+}
+
+.result-value {
+    font-size: 48px;
+    font-weight: bold;
+    color: #d58b37;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: #ffedbd;
+    color: #98651e;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.about-hero {
+    background: linear-gradient(120deg, #fce5df, #f4eaff);
+    border-radius: 25px;
+    padding: 35px;
+    text-align: center;
+}
+
+.contact {
+    background: linear-gradient(135deg, #294c66, #466e7f);
+    color: white;
+    border-radius: 22px;
+    padding: 30px;
+}
+
+.contact h2 { color: #ffe1a8; }
+
+.contact p { color: #e4f0ed; }
+
+.contact-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.contact a {
+    display: block;
+    color: white;
+    background: #ffffff18;
+    text-decoration: none;
+    padding: 13px;
+    border-radius: 12px;
+    font-size: 14px;
+    transition: 0.2s;
+}
+.contact a:hover {
+    background: #ffffff35;
+    transform: translateY(-2px);
+}
+
+footer {
+    background: linear-gradient(120deg, #194d43, #315d69);
+    color: #f2f5df;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 30px;
+}
+
+footer p { font-size: 13px; }
+
+
+.nutrition-intro{background:linear-gradient(120deg,#fff0cc,#fce5df,#e5f2ff);border-radius:22px;padding:22px;margin:18px 0}
+
+.macro-explainer{background:#f3f8f2;border:1px solid #dcebdc;border-radius:18px;padding:20px;margin:18px 0}
+.macro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.macro-card{background:#fff;border:1px solid #eee8dc;border-radius:15px;padding:15px;text-align:center}
+.macro-card strong{display:block;font-size:24px;color:#245c49;margin:5px 0}
+.macro-card span{font-size:13px;color:#64766e}
+.macro-table-wrap{overflow-x:auto;margin:15px 0}
+.macro-table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;font-size:14px}
+.macro-table th,.macro-table td{padding:11px 10px;text-align:center;border-bottom:1px solid #eee8dc;white-space:nowrap}
+.macro-table th{background:#e9f3e9;color:#315c4b}
+.macro-table td:first-child,.macro-table th:first-child{text-align:left}
+.macro-note{font-size:13px;color:#687a72;margin-top:10px}
+@media(max-width:650px){.macro-grid{grid-template-columns:1fr}.macro-table{font-size:12px}.macro-table th,.macro-table td{padding:9px 7px}}
+
+.nutrient-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.nutrient-card{background:white;border:1px solid #f0e5d8;border-radius:17px;padding:16px 10px;text-align:center}
+.nutrient-card strong{display:block;color:#315c4b;font-size:23px}
+.nutrient-card span{color:#71847b;font-size:12px}
+.meal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0}
+.meal-card{border-radius:18px;padding:18px;background:white;border:1px solid #f0e5d8;box-shadow:0 5px 18px #164c3d08}
+.meal-card .meal-emoji{font-size:32px}
+.meal-card h4{color:#315c4b;margin:5px 0}
+.meal-card p{color:#71847b;font-size:13px}
+.tip-card{border-radius:18px;padding:20px;background:#f1f6ff;margin-top:15px}
+.recommendation-banner{padding:22px;border-radius:20px;background:linear-gradient(120deg,#e5f5e9,#fff0cc);margin:15px 0}
+.quiz-question{background:#fffaf3;border:1px solid #eee3d5;border-radius:17px;padding:18px;margin:15px 0}
+.quiz-question h3{margin:0 0 12px;color:#315c4b}
+.quiz-option{display:block;width:100%;text-align:left;border:1px solid #dceae2;border-radius:12px;background:white;padding:12px 14px;margin:8px 0;cursor:pointer;color:#35443f;font-size:14px}
+.quiz-option:hover{background:#fff0cc;border-color:#e99b48}
+.quiz-result{display:none;background:#fff0cc;border-radius:18px;padding:22px;text-align:center;margin-top:20px}
+@media(max-width:750px){.nutrient-grid{grid-template-columns:repeat(2,1fr)}.meal-grid{grid-template-columns:1fr}}
+
+@media(max-width:750px) {
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 35px 22px;
+    }
+
+    .hero-art {
+        width: 90%;
+        max-width: 300px;
+        min-width: 0;
+    }
+
+    .grid { grid-template-columns: 1fr; }
+
+    .steps { grid-template-columns: repeat(2, 1fr); }
+
+    .header-content {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .page { padding: 30px 16px; }
+
+    nav button {
+        font-size: 12px;
+        padding: 9px 12px;
+    }
+
+    .contact-list { grid-template-columns: 1fr; }
+
+    .people-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .people-art {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">🍃 Teen<span>Health.</span></div>
+        <div class="header-tag">YOUR HEALTH, YOUR FUTURE</div>
+    </div>
+</header>
+
+<nav>
+    <button class="selected" onclick="showPage('home',this)">⌂ Beranda</button>
+    <button onclick="showPage('kalkulator',this)">⚖ Kalkulator IMT</button>
+    <button onclick="showPage('hasil',this)">✦ Hasil & Rekomendasi</button>
+    <button onclick="showPage('tentang',this)">♡ Tentang Kami</button>
+    <button onclick="showPage('kuis',this)">🧠 Mini Quiz</button>
+</nav>
+
+
+<!-- BERANDA -->
+
+<section id="home" class="page active">
+
+<div class="hero">
+
+    <div class="hero-text">
+
+        <span class="eyebrow">🌿 HEALTHY LIFESTYLE FOR TEENS</span>
+
+        <h1>Small Steps.<br>Big Changes.</h1>
+
+        <p>
+        Mulai perjalanan hidup sehatmu dari sekarang.
+        Kenali tubuhmu, pahami kebutuhan nutrisimu,
+        dan bangun kebiasaan baik setiap hari.
+        </p>
+
+        <button class="main-btn"
+        onclick="showPage('kalkulator')">
+            Explore Your Health →
+        </button>
+
+    </div>
+
+    <!-- ILUSTRASI BUAH ASLI, TIDAK DIUBAH -->
+
+    <div class="hero-art">
+
+        <svg viewBox="0 0 400 340"
+        xmlns="http://www.w3.org/2000/svg">
+
+            <circle cx="200" cy="180" r="145" fill="#fff0c9"/>
+
+            <path d="M30 260 Q5 200 45 190 Q60 230 30 260Z"
+            fill="#82b98b"/>
+
+            <path d="M350 85 Q370 35 390 65 Q380 105 350 85Z"
+            fill="#91c99a"/>
+
+            <!-- Anggur -->
+            <g fill="#9a7bc4">
+                <circle cx="55" cy="230" r="17"/>
+                <circle cx="78" cy="240" r="17"/>
+                <circle cx="60" cy="260" r="17"/>
+                <circle cx="82" cy="275" r="16"/>
+                <circle cx="45" cy="280" r="15"/>
+            </g>
+
+            <path d="M63 215 Q70 190 90 195"
+            stroke="#548b59" stroke-width="5" fill="none"/>
+
+            <!-- Jeruk -->
+            <circle cx="320" cy="250" r="43" fill="#f4a340"/>
+            <circle cx="320" cy="250" r="35" fill="#ffc35f"/>
+
+            <path d="M320 213 Q335 192 346 204 Q340 220 320 217Z"
+            fill="#65a96e"/>
+
+            <!-- Stroberi -->
+            <path d="M320 130 Q280 125 283 165
+            Q295 205 320 215 Q345 205 357 165
+            Q360 125 320 130Z"
+            fill="#ed7770"/>
+
+            <path d="M320 133 Q307 110 296 125
+            Q310 143 320 133 Q335 110 347 125
+            Q335 143 320 133Z"
+            fill="#68a96c"/>
+
+            <g fill="#ffe2a0">
+                <circle cx="300" cy="157" r="3"/>
+                <circle cx="323" cy="165" r="3"/>
+                <circle cx="340" cy="155" r="3"/>
+                <circle cx="311" cy="185" r="3"/>
+                <circle cx="331" cy="190" r="3"/>
+            </g>
+
+            <!-- Apel -->
+            <path d="M85 105 Q50 70 25 105 Q10 145 50 175
+            Q65 185 85 170 Q105 185 120 175
+            Q160 145 145 105 Q120 70 85 105Z"
+            fill="#e77e69"/>
+
+            <path d="M85 104 Q90 75 105 65"
+            stroke="#75543a" stroke-width="6" fill="none"/>
+
+            <path d="M102 76 Q130 48 143 75 Q122 95 102 76Z"
+            fill="#75ad70"/>
+
+            <!-- Pisang -->
+            <path d="M220 270 Q145 300 115 250
+            Q100 230 115 215 Q135 255 220 235
+            Q250 225 260 240 Q250 270 220 270Z"
+            fill="#f7cb55" stroke="#dba43d" stroke-width="3"/>
+
+            <!-- Daun nanas -->
+            <path d="M190 95 Q150 40 165 20 Q200 45 202 90Z"
+            fill="#559b69"/>
+
+            <path d="M200 90 Q185 20 210 8 Q225 48 208 95Z"
+            fill="#72b77b"/>
+
+            <path d="M210 95 Q220 25 248 25 Q245 65 218 105Z"
+            fill="#4d9163"/>
+
+            <path d="M195 100 Q130 65 135 40 Q180 55 205 100Z"
+            fill="#80bd76"/>
+
+            <path d="M215 100 Q265 50 278 70 Q260 105 215 115Z"
+            fill="#70ad69"/>
+
+            <!-- Badan nanas -->
+            <path d="M155 105 Q130 120 140 190
+            Q150 285 205 295 Q260 285 270 190
+            Q280 120 250 105 Q205 85 155 105Z"
+            fill="#f5bd48" stroke="#d69a32" stroke-width="4"/>
+
+            <!-- Tekstur nanas -->
+            <g stroke="#d28e2e" stroke-width="3" fill="none">
+                <path d="M150 130 L260 250"/>
+                <path d="M140 165 L250 275"/>
+                <path d="M155 220 L230 285"/>
+                <path d="M255 130 L150 250"/>
+                <path d="M265 170 L175 280"/>
+                <path d="M250 220 L190 290"/>
+            </g>
+
+            <circle cx="170" cy="155" r="5" fill="#ffe59b"/>
+            <circle cx="240" cy="190" r="5" fill="#ffe59b"/>
+            <circle cx="200" cy="245" r="5" fill="#ffe59b"/>
+
+            <!-- Bintang -->
+            <path d="M75 40 L81 55 L96 60 L81 66
+            L75 82 L69 66 L54 60 L69 55Z"
+            fill="#f2bb53"/>
+
+            <path d="M355 35 L360 47 L373 52
+            L360 57 L355 70 L350 57 L337 52
+            L350 47Z"
+            fill="#f0a5a1"/>
+
+        </svg>
+
+    </div>
+
+</div>
+
+
+<!-- ILUSTRASI ORANG BARU -->
+
+<div class="people-card">
+
+    <div class="people-text">
+
+        <span class="eyebrow">HEALTHY IS A LIFESTYLE</span>
+
+        <h2>Healthy Together, Happy Forever! 💗</h2>
+
+        <p>
+        Menjadi sehat bukan tentang menjadi sempurna.
+        Yuk, mulai kebiasaan kecil bersama teman-teman:
+        makan bergizi, aktif bergerak, dan istirahat cukup!
+        </p>
+
+    </div>
+
+    <div class="people-art">
+
+        <svg viewBox="0 0 480 300"
+        xmlns="http://www.w3.org/2000/svg">
+
+            <!-- Background -->
+            <circle cx="240" cy="150" r="135" fill="#ffffff70"/>
+
+            <circle cx="65" cy="65" r="12" fill="#f5c75d"/>
+            <circle cx="415" cy="75" r="10" fill="#ed9990"/>
+            <path d="M390 210 l8 -17 l8 17 l17 8 l-17 8 l-8 17 l-8 -17 l-17 -8Z"
+            fill="#b7a0dc"/>
+
+            <!-- Cewek: rambut panjang wavy -->
+            <path d="M82 132 Q69 70 105 51 Q139 31 166 53 Q198 77 184 137
+            L180 178 Q168 190 160 169 L151 151 L105 171 L96 188
+            Q80 181 87 151Z" fill="#493a39"/>
+            <path d="M88 105 Q91 48 132 47 Q174 43 183 91
+            Q165 75 153 91 Q139 105 122 88 Q105 78 88 105Z" fill="#493a39"/>
+            <path d="M92 104 Q76 126 94 145 Q103 159 91 177
+            M171 101 Q190 122 174 143 Q164 158 179 174"
+            stroke="#493a39" stroke-width="13" fill="none" stroke-linecap="round"/>
+
+            <!-- Wajah cewek: kulit sawo matang -->
+            <ellipse cx="132" cy="130" rx="39" ry="48"
+            fill="#b87956"/>
+
+            <!-- Rambut bergelombang membingkai wajah -->
+            <path d="M94 108 Q83 124 96 139 Q103 151 93 165"
+            stroke="#493a39" stroke-width="10" fill="none" stroke-linecap="round"/>
+            <path d="M169 105 Q184 122 171 139 Q164 151 176 164"
+            stroke="#493a39" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+            <!-- Mata dan senyum -->
+            <circle cx="118" cy="131" r="3" fill="#44322f"/>
+            <circle cx="147" cy="131" r="3" fill="#44322f"/>
+
+            <path d="M120 151 Q133 164 147 151"
+            stroke="#a85852" stroke-width="3"
+            fill="none" stroke-linecap="round"/>
+
+            <!-- Leher -->
+            <rect x="119" y="168" width="26" height="25"
+            rx="9" fill="#b87956"/>
+
+            <!-- Baju kiri -->
+            <path d="M104 187 Q75 190 65 235
+            L55 290 L205 290 L195 235
+            Q185 190 157 187 L145 199
+            L132 217 L116 198Z"
+            fill="#ef8d83"/>
+
+            <!-- Lengan -->
+            <path d="M70 212 Q40 235 52 255"
+            stroke="#b87956" stroke-width="20"
+            fill="none" stroke-linecap="round"/>
+
+            <path d="M188 213 Q210 230 200 251"
+            stroke="#b87956" stroke-width="20"
+            fill="none" stroke-linecap="round"/>
+
+            <!-- Tangan dan buah -->
+            <circle cx="53" cy="256" r="11" fill="#b87956"/>
+
+            <path d="M35 235 Q20 217 28 198
+            Q48 187 65 204 Q74 222 54 239Z"
+            fill="#f5bd48"/>
+
+            <path d="M45 197 Q33 177 43 170
+            Q55 184 51 200Z"
+            fill="#67a36e"/>
+
+            <!-- Cowok: rambut curly -->
+            <path d="M276 131 Q263 78 294 59 Q319 38 347 52
+            Q381 48 390 93 Q396 123 382 151 L375 174 L286 174Z"
+            fill="#292733"/>
+            <g fill="#292733">
+              <circle cx="291" cy="75" r="18"/><circle cx="313" cy="57" r="20"/>
+              <circle cx="338" cy="55" r="20"/><circle cx="361" cy="66" r="19"/>
+              <circle cx="380" cy="88" r="17"/><circle cx="285" cy="101" r="15"/>
+              <circle cx="305" cy="82" r="15"/><circle cx="329" cy="76" r="17"/>
+              <circle cx="353" cy="83" r="16"/><circle cx="374" cy="105" r="14"/>
+            </g>
+
+            <!-- Wajah cowok: tan lebih cerah dari cewek -->
+            <ellipse cx="331" cy="132" rx="39" ry="48"
+            fill="#d69a72"/>
+
+            <!-- Rambut samping ikal -->
+            <path d="M291 109 Q277 126 292 145 Q300 155 293 169
+            M371 108 Q387 126 373 145 Q365 157 375 169"
+            stroke="#292733" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+            <!-- Mata dan senyum -->
+            <circle cx="317" cy="132" r="3" fill="#352b29"/>
+            <circle cx="345" cy="132" r="3" fill="#352b29"/>
+
+            <path d="M317 152 Q331 164 345 152"
+            stroke="#8d4f46" stroke-width="3"
+            fill="none" stroke-linecap="round"/>
+
+            <!-- Leher -->
+            <rect x="318" y="170" width="26" height="25"
+            rx="9" fill="#d69a72"/>
+
+            <!-- Baju kanan -->
+            <path d="M302 189 Q272 190 262 235
+            L252 290 L408 290 L398 235
+            Q388 190 360 189 L344 204
+            L331 218 L317 202Z"
+            fill="#79a8cf"/>
+
+            <!-- Lengan -->
+            <path d="M268 214 Q245 230 257 252"
+            stroke="#d69a72" stroke-width="20"
+            fill="none" stroke-linecap="round"/>
+
+            <path d="M392 213 Q420 225 414 249"
+            stroke="#d69a72" stroke-width="20"
+            fill="none" stroke-linecap="round"/>
+
+            <!-- Apel -->
+            <circle cx="414" cy="261" r="19" fill="#e77e69"/>
+            <path d="M414 243 Q413 232 424 228"
+            stroke="#6c513b" stroke-width="4" fill="none"/>
+
+            <path d="M420 233 Q437 218 441 232
+            Q434 245 420 233Z" fill="#6ba56f"/>
+
+            <!-- Bintang dekorasi -->
+            <path d="M224 72 L230 88 L246 94
+            L230 100 L224 116 L218 100
+
+            L202 94 L218 88Z"
+            fill="#f1bd56"/>
+
+            <path d="M230 160 l5 12 l12 5 l-12 5
+            l-5 12 l-5 -12 l-12 -5 l12 -5Z"
+            fill="#b7a0dc"/>
+
+        </svg>
+
+    </div>
+
+</div>
+
+
+<div class="section-heading">
+    <h2>What is TeenHealth? 🌱</h2>
+    <p>Kenali lebih dekat platform kesehatan remaja.</p>
+</div>
+
+<div class="card">
+
+    <p>
+    TeenHealth dibuat berdasarkan permasalahan gaya hidup dan pola
+    makan remaja saat ini yang kebanyakan jajan sembarangan dan
+    nongkrong di cafe tanpa memperhatikan kesehatan.
+    </p>
+
+    <p>
+    Padahal, kesehatan merupakan hal penting yang perlu dijaga
+    sejak dini. Pola makan seimbang, aktivitas fisik, tidur cukup,
+    dan kebutuhan cairan yang terpenuhi dapat membantu tubuh
+    tetap sehat.
+    </p>
+
+</div>
+
+
+<div class="section-heading">
+    <h2>Why Healthy Lifestyle? 💚</h2>
+    <p>Manfaat menerapkan kebiasaan sehat sejak remaja.</p>
+</div>
+
+<div class="grid">
+
+    <div class="card">
+        <div class="icon">💪</div>
+        <h3>Stronger Body</h3>
+        <p>Membantu menjaga daya tahan tubuh.</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🧠</div>
+        <h3>Better Focus</h3>
+        <p>Meningkatkan konsentrasi dan energi.</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🥗</div>
+        <h3>Balanced Nutrition</h3>
+        <p>Mendukung pertumbuhan dan perkembangan.</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🏃</div>
+        <h3>Active Lifestyle</h3>
+        <p>Membantu menjaga kebugaran tubuh.</p>
+    </div>
+
+</div>
+
+
+<div class="section-heading">
+    <h2>How It Works? ✨</h2>
+    <p>Hanya dengan lima langkah sederhana.</p>
+</div>
+
+<div class="steps">
+
+    <div class="step">
+        <strong>01</strong>
+        📝
+        <p>Masukkan data</p>
+    </div>
+
+    <div class="step">
+        <strong>02</strong>
+        ⚖️
+        <p>Hitung IMT</p>
+    </div>
+
+    <div class="step">
+        <strong>03</strong>
+        📊
+        <p>Lihat hasil</p>
+    </div>
+
+    <div class="step">
+        <strong>04</strong>
+        💡
+        <p>Baca rekomendasi</p>
+    </div>
+
+    <div class="step">
+        <strong>05</strong>
+        🌱
+        <p>Mulai hidup sehat</p>
+    </div>
+
+</div>
+
+
+<!-- TOMBOL START SETELAH CARA PENGGUNAAN -->
+
+<div class="start-section">
+
+    <h2>Ready to Start Your Journey? 🍍</h2>
+
+    <p>
+    Your healthier lifestyle starts with one small step.
+    Yuk, kenali kondisi tubuhmu sekarang!
+    </p>
+
+    <button class="start-btn"
+    onclick="showPage('kalkulator')">
+        START YOUR JOURNEY →
+    </button>
+
+</div>
+
+</section>
+
+
+<!-- KALKULATOR -->
+
+<section id="kalkulator" class="page">
+
+    <div class="page-title">
+        <span class="eyebrow">YOUR HEALTH CHECK</span>
+        <h1>IMT Calculator ⚖️</h1>
+        <p>Isi data berikut untuk mengetahui nilai IMT-mu.</p>
+    </div>
+
+    <div class="card form-card">
+
+        <h2>📝 Personal Information</h2>
+
+        <form onsubmit="hitungIMT(event)">
+
+            <label>🎂 Umur (tahun)</label>
+            <input type="number" id="umur"
+            min="5" max="100" placeholder="Contoh: 16" required>
+
+            <label>👤 Jenis Kelamin</label>
+            <select id="jk" required>
+                <option value="">Pilih jenis kelamin</option>
+                <option value="laki-laki">Laki-laki</option>
+                <option value="perempuan">Perempuan</option>
+            </select>
+
+            <label>📏 Tinggi Badan (cm)</label>
+            <input type="number" id="tb"
+            min="50" max="250" placeholder="Contoh: 160" required>
+
+            <label>⚖️ Berat Badan (kg)</label>
+            <input type="number" id="bb"
+            min="10" max="300" placeholder="Contoh: 50" required>
+
+            <button type="submit" class="main-btn">
+                ✨ Calculate My IMT
+            </button>
+
+        </form>
+
+        <div id="output"></div>
+
+    </div>
+
+</section>
+
+
+<!-- HASIL DAN REKOMENDASI -->
+
+<section id="hasil" class="page">
+
+    <div class="page-title">
+        <span class="eyebrow">YOUR HEALTH REPORT</span>
+        <h1>Results & Recommendations 📊</h1>
+        <p>Kenali hasil dan rekomendasi gaya hidup sehatmu.</p>
+    </div>
+
+    <div class="card">
+
+        <div id="hasilRekomendasi">
+
+            <center>
+                <div style="font-size:70px">🌱</div>
+                <h2>Ready to be healthier?</h2>
+                <p>
+                Silakan hitung IMT terlebih dahulu untuk melihat
+                hasil dan rekomendasi kesehatanmu.
+                </p>
+
+                <br>
+
+                <button class="main-btn"
+                onclick="showPage('kalkulator')">
+                    Calculate Now →
+                </button>
+            </center>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- MINI QUIZ -->
+<section id="kuis" class="page">
+    <div class="page-title">
+        <span class="eyebrow">LET'S TEST YOUR KNOWLEDGE</span>
+        <h1>Mini Nutrition Quiz 🧠</h1>
+        <p>Uji pengetahuanmu tentang gizi dan kebiasaan sehat!</p>
+    </div>
+    <div class="card">
+        <div class="recommendation-banner">
+            <h2>Ready for the challenge? 🌟</h2>
+            <p>Pilih satu jawaban yang paling tepat pada setiap pertanyaan. Setelah selesai, tekan tombol Lihat Skor!</p>
+        </div>
+        <form id="quizForm" onsubmit="periksaKuis(event)">
+            <div id="quizQuestions"></div>
+            <button type="submit" class="main-btn">Lihat Skor Saya ✨</button>
+            <button type="button" class="main-btn" style="background:#789087;margin-left:8px" onclick="resetKuis()">Ulangi Kuis</button>
+        </form>
+        <div id="quizResult" class="quiz-result"></div>
+    </div>
+</section>
+
+<!-- TENTANG KAMI -->
+
+<section id="tentang" class="page">
+
+    <div class="about-hero">
+
+        <div style="font-size:75px">💚</div>
+
+        <span class="eyebrow">A LITTLE CARE GOES A LONG WAY</span>
+
+        <h1>Thank You!</h1>
+
+        <p>Terima kasih telah menjadi bagian dari TeenHealth.</p>
+
+    </div>
+
+    <div class="section-heading">
+        <h2>About This Website 🌿</h2>
+    </div>
+
+    <div class="card">
+
+        <p>
+        Terima kasih telah menggunakan TeenHealth.
+        Semoga website ini membantu meningkatkan kesadaran
+        tentang pentingnya menjaga kesehatan.
+        </p>
+
+        <br>
+
+        <h3>💡 Pesan untuk Pengguna</h3>
+
+        <p>
+        Informasi pada website ini merupakan edukasi awal.
+        Pastikan kembali informasi kesehatan melalui sumber
+        terpercaya dan konsultasikan kepada dokter atau tenaga
+        kesehatan untuk pemeriksaan lebih lanjut.
+        </p>
+
+        <p>
+        Jangan melakukan diet ekstrem atau mengubah pola makan
+        secara drastis hanya berdasarkan hasil IMT.
+        </p>
+
+    </div>
+
+
+    <div class="card" style="background:#fff0cc;border:none;margin:25px 0">
+        <h2 style="color:#9b671e">💌 Punya Saran atau Masukan?</h2>
+        <p style="color:#6c8178">
+            Kami terbuka untuk kritik, saran, dan masukan dari kamu!
+            Jika ada hal yang ingin disampaikan tentang TeenHealth,
+            jangan ragu untuk menghubungi kami melalui akun Instagram
+            yang tertera di bawah ini. Setiap masukanmu berarti bagi kami
+            untuk membuat TeenHealth menjadi lebih baik. 💗
+        </p>
+    </div>
+
+    <div class="contact">
+
+        <h2>📩 Find Us on Instagram!</h2>
+
+        <p>Follow our team on Instagram 💗</p>
+
+        <div class="contact-list">
+
+            <a href="https://instagram.com/khrinsnaa" target="_blank">
+                📷 Instagram: @khrinsnaa
+            </a>
+
+            <a href="https://instagram.com/dissanindya_" target="_blank">
+                📷 Instagram: @dissanindya_
+            </a>
+
+            <a href="https://instagram.com/miayamsagan" target="_blank">
+                📷 Instagram: @miayamsagan
+            </a>
+
+            <a href="https://instagram.com/kcaesarr" target="_blank">
+                📷 Instagram: @kcaesarr
+            </a>
+
+            <a href="https://instagram.com/quintamerry.els" target="_blank">
+                📷 Instagram: @quintamerry.els
+            </a>
+
+            <a href="https://instagram.com/tirtaamertarafidanathari" target="_blank">
+                📷 Instagram: @tirtaamertarafidanathari
+            </a>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <center>
+        <h2>Stay Healthy, Stay Happy! 🌱</h2>
+        <p>Your health is your greatest investment.</p>
+    </center>
+
+</section>
+
+
+<footer>
+    <h3>🍃 TeenHealth.</h3>
+    <p>Healthy Lifestyle, Happy Life.</p>
+    <p>© 2026 TeenHealth | All Rights Reserved</p>
+</footer>
+
+
+<script>
+
+// NAVIGASI
+
+function showPage(id, button) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    document.querySelectorAll("nav button").forEach(btn => {
+        btn.classList.remove("selected");
+    });
+
+    if (button) {
+        button.classList.add("selected");
+    } else {
+        document.querySelectorAll("nav button").forEach(btn => {
+            if (btn.getAttribute("onclick").includes(id)) {
+                btn.classList.add("selected");
+            }
+        });
+    }
+
+    window.scrollTo(0, 0);
+}
+
+
+// DATA REKOMENDASI
+
+const data = {
+
+rendah: {
+    nama: "IMT Rendah",
+    emoji: "🥑",
+
+    dampak: [
+        "Mudah lelah dan kekurangan energi.",
+        "Daya tahan tubuh dapat menurun.",
+        "Gangguan konsentrasi dan kemampuan belajar.",
+        "Kekurangan vitamin atau mineral.",
+        "Pertumbuhan dan perkembangan dapat terganggu pada remaja."
+    ],
+
+    makan: [
+        "Mengonsumsi makanan bergizi seimbang.",
+        "Membiasakan makan teratur.",
+        "Memenuhi kebutuhan energi dan zat gizi.",
+        "Mengonsumsi telur, ikan, ayam, tahu, dan tempe.",
+        "Menambahkan selingan bergizi jika diperlukan."
+    ],
+
+    olahraga: [
+        "Melakukan aktivitas fisik ringan hingga sedang.",
+        "Berjalan kaki atau bersepeda sesuai kemampuan.",
+        "Melakukan latihan kekuatan sesuai usia.",
+        "Menghindari aktivitas berlebihan jika energi belum tercukupi."
+    ],
+
+    tidur: [
+        "Tidur teratur 8–10 jam bagi remaja.",
+        "Menjaga konsistensi waktu tidur.",
+        "Minum air putih secara teratur.",
+        "Memenuhi kebutuhan cairan sesuai aktivitas."
+    ]
+},
+
+normal: {    nama: "IMT Normal",
+    emoji: "🌟",
+
+    dampak: [
+        "IMT normal tidak menjamin bebas dari masalah kesehatan.",
+        "Kekurangan zat gizi tetap dapat terjadi.",
+        "Pola makan tidak seimbang dapat menyebabkan kekurangan vitamin.",
+        "Kurangnya aktivitas fisik dapat memengaruhi kebugaran.",
+        "Kebiasaan hidup tidak sehat dapat meningkatkan risiko kesehatan."
+    ],
+
+    makan: [
+        "Mempertahankan pola makan bergizi seimbang.",
+        "Mengonsumsi makanan beragam.",
+        "Membiasakan makan teratur.",
+        "Memperbanyak sayur dan buah.",
+        "Memenuhi kebutuhan energi sesuai usia dan aktivitas."
+    ],
+
+    olahraga: [
+        "Aktivitas fisik minimal 60 menit sehari bagi anak dan remaja.",
+        "Melakukan olahraga yang menyenangkan.",
+        "Penguatan otot dan tulang minimal 3 hari seminggu.",
+        "Mengurangi waktu duduk terlalu lama."
+    ],
+
+    tidur: [
+        "Tidur teratur 8–10 jam bagi remaja.",
+        "Menjaga konsistensi waktu tidur.",
+        "Minum air putih secara teratur.",
+        "Memenuhi kebutuhan cairan sesuai aktivitas."
+    ]
+},
+
+berlebih: {
+    nama: "IMT Berlebih",
+    emoji: "🍎",
+
+    dampak: [
+        "Risiko gangguan kadar gula darah meningkat.",
+        "Risiko diabetes tipe 2 dapat meningkat.",
+        "Risiko tekanan darah tinggi dan gangguan jantung.",
+        "Beban tambahan pada sendi dapat menyebabkan nyeri.",
+        "Risiko gangguan tidur, termasuk sleep apnea.",
+        "Risiko stigma, perundungan, dan gangguan psikologis."
+    ],
+
+    makan: [
+        "Mengonsumsi makanan bergizi seimbang.",
+        "Memperbanyak sayur dan buah.",
+        "Memilih sumber protein beragam.",
+        "Membatasi minuman tinggi gula.",
+        "Membiasakan makan teratur.",
+        "Menghindari diet ekstrem."
+    ],
+
+    olahraga: [
+        "Aktivitas fisik minimal 60 menit sehari bagi anak dan remaja.",
+        "Berenang, bersepeda, atau berjalan kaki.",
+        "Penguatan otot dan tulang minimal 3 hari seminggu.",
+        "Meningkatkan aktivitas secara bertahap.",
+        "Mengurangi kebiasaan duduk terlalu lama."
+    ],
+
+    tidur: [
+        "Tidur teratur 8–10 jam bagi remaja.",
+        "Menjaga konsistensi waktu tidur.",
+        "Minum air putih secara teratur.",
+        "Memenuhi kebutuhan cairan sesuai aktivitas."
+    ]
+}
+
+};
+
+
+
+// ACUAN KEBUTUHAN GIZI HARIAN (AKG KEMENKES 2019)
+const akgRemaja = {
+    "laki-laki": {
+        "13-15": {energi:2400, protein:70, lemak:80, karbo:350, serat:34, air:2100},
+        "16-18": {energi:2650, protein:75, lemak:85, karbo:400, serat:37, air:2300}
+    },
+    "perempuan": {
+        "13-15": {energi:2050, protein:65, lemak:70, karbo:300, serat:29, air:2100},
+        "16-18": {energi:2100, protein:65, lemak:70, karbo:300, serat:29, air:2150}
+    }
+};
+
+const menuHarian = {
+    rendah: [
+        ["🌞","Sarapan","Nasi, telur, tumis sayur, dan susu."],
+        ["🍌","Camilan pagi","Pisang dan yoghurt."],
+        ["🍛","Makan siang","Nasi, ayam/ikan, tempe, sayur, dan buah."],
+        ["🥪","Camilan sore","Roti isi telur atau keju."],
+        ["🌙","Makan malam","Nasi, ikan, tahu, sayur, dan buah."]
+    ],
+    normal: [
+        ["🍳","Sarapan","Nasi atau roti, telur, sayur, dan buah."],
+        ["🍎","Camilan pagi","Buah segar dan yoghurt."],
+        ["🥗","Makan siang","Nasi, ikan/ayam, tempe, dan sayuran."],
+        ["🥜","Camilan sore","Kacang tanpa banyak garam atau buah."],
+        ["🍲","Makan malam","Nasi, tahu/ikan, sayur, dan buah."]
+    ],
+    berlebih: [
+        ["🥚","Sarapan","Telur, roti atau nasi, dan buah."],
+        ["🍐","Camilan pagi","Buah segar."],
+        ["🐟","Makan siang","Nasi secukupnya, ikan/ayam, tempe, dan banyak sayur."],
+        ["🥛","Camilan sore","Yoghurt tawar atau buah."],
+        ["🥦","Makan malam","Nasi, protein seperti tahu/ikan, dan sayuran."]
+    ]
+};
+
+function kelompokUmurAKG(umur) {
+    if (umur >= 13 && umur <= 15) return "13-15";
+    if (umur >= 16 && umur <= 18) return "16-18";
+    return null;
+}
+
+function tampilkanPanduanGizi(umur,jk,kategori) {
+    const kelompok=kelompokUmurAKG(umur);
+
+    if(!kelompok) return `<div class="tip-card"><h3>🍽️ Panduan Gizi Harian</h3><p>Angka kebutuhan gizi pada fitur ini tersedia untuk remaja usia 13–18 tahun berdasarkan AKG Kemenkes RI 2019. Untuk usia di luar rentang tersebut, kebutuhan perlu dilihat pada kelompok umur yang sesuai.</p></div>`;
+
+    const g=akgRemaja[jk][kelompok], menu=menuHarian[kategori];
+
+    const judul=kategori==="rendah"
+        ?"Fokus memenuhi kebutuhan gizi dan mendukung pertumbuhan"
+        :kategori==="normal"
+        ?"Fokus mempertahankan pola makan yang beragam dan seimbang"
+        :"Fokus membangun kebiasaan makan seimbang tanpa diet ekstrem";
+
+    // Pembagian contoh ke 5 waktu makan (20%-10%-30%-10%-30%), bukan aturan medis.
+    const pembagian=[
+        {nama:"Sarapan",p:20},
+        {nama:"Camilan pagi",p:10},
+        {nama:"Makan siang",p:30},
+        {nama:"Camilan sore",p:10},
+        {nama:"Makan malam",p:30}
+    ];
+
+    const gram=(angka,persen)=>Math.round(angka*persen/100*10)/10;
+
+    const rincianMakro=pembagian.map(x=>`
+        <tr>
+            <td>${x.nama}</td>
+            <td>${gram(g.karbo,x.p)} g</td>
+            <td>${gram(g.protein,x.p)} g</td>
+            <td>${gram(g.lemak,x.p)} g</td>
+            <td>${x.p}%</td>
+        </tr>
+    `).join("");
+
+    return `
+    <div class="nutrition-intro">
+      <span class="badge">DAILY NUTRITION GUIDE</span>
+      <h3>🍽️ Kebutuhan Gizi Harian Remaja</h3>
+      <p><b>${umur} tahun · ${jk} · Kelompok AKG ${kelompok} tahun</b></p>
+      <p>${judul}.</p>
+      <p>Angka berikut adalah acuan AKG harian, bukan target untuk menaikkan atau menurunkan berat badan.</p>
+    </div>
+
+    <div class="nutrient-grid">
+      <div class="nutrient-card">⚡<strong>${g.energi}</strong><span>Energi (kkal)</span></div>
+      <div class="nutrient-card">🥚<strong>${g.protein} g</strong><span>Protein</span></div>
+      <div class="nutrient-card">🥑<strong>${g.lemak} g</strong><span>Lemak total</span></div>
+      <div class="nutrient-card">🍚<strong>${g.karbo} g</strong><span>Karbohidrat</span></div>
+      <div class="nutrient-card">🥬<strong>${g.serat} g</strong><span>Serat</span></div>
+      <div class="nutrient-card">💧<strong>${g.air} ml</strong><span>Air</span></div>
+    </div>
+
+    <div class="macro-explainer">
+      <h3>📊 Rincian Komposisi Makro per Hari</h3>
+      <p>Ini menunjukkan jumlah acuan harian yang perlu dipenuhi dari seluruh makanan dan minuman dalam sehari.</p>
+
+      <div class="macro-grid">
+        <div class="macro-card">🍚<strong>${g.karbo} g</strong><span>Karbohidrat per hari</span></div>
+        <div class="macro-card">🥚<strong>${g.protein} g</strong><span>Protein per hari</span></div>
+        <div class="macro-card">🥑<strong>${g.lemak} g</strong><span>Lemak per hari</span></div>
+      </div>
+
+      <h4>Contoh pembagian ke 5 waktu makan</h4>
+
+      <div class="macro-table-wrap">
+        <table class="macro-table">
+          <thead>
+            <tr>
+                <th>Waktu makan</th>
+                <th>Karbohidrat</th>
+                <th>Protein</th>
+                <th>Lemak</th>
+                <th>Porsi acuan</th>
+            </tr>
+          </thead>
+          <tbody>${rincianMakro}</tbody>
+          <tfoot>
+            <tr>
+                <th>Total sehari</th>
+                <th>${g.karbo} g</th>
+                <th>${g.protein} g</th>
+                <th>${g.lemak} g</th>
+                <th>100%</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <p class="macro-note">Pembagian 20%-10%-30%-10%-30% adalah contoh agar lebih mudah merencanakan makan, bukan standar wajib. Kandungan sebenarnya bergantung pada bahan dan ukuran porsi.</p>
+    </div>
+
+    <h3>🥗 Inspirasi Menu Sehari</h3>
+
+    <div class="meal-grid">
+        ${menu.map(m=>`
+            <div class="meal-card">
+                <div class="meal-emoji">${m[0]}</div>
+                <h4>${m[1]}</h4>
+                <p>${m[2]}</p>
+            </div>
+        `).join("")}
+    </div>
+
+    <div class="tip-card">
+        <b>💡 Ingat!</b>
+        <p>Kebutuhan tiap orang dapat berbeda karena aktivitas, kondisi kesehatan, dan pertumbuhan. Kategori IMT saja tidak cukup untuk menentukan kebutuhan makro yang berbeda. Karena itu, angka harian mengikuti kelompok usia dan jenis kelamin pada AKG, bukan dibuat lebih tinggi/rendah hanya karena kategori IMT. Pembagian per waktu makan dan menu adalah contoh edukasi, bukan resep diet individual. Sesuaikan dengan aktivitas, pertumbuhan, dan arahan tenaga kesehatan bila diperlukan.</p>
+
+        <p>
+            <small>
+                Sumber angka: Permenkes RI No. 28 Tahun 2019 tentang Angka Kecukupan Gizi.
+                <a href="https://jdih.kemkes.go.id/documents/peraturan-menteri-kesehatan-nomor-28-tahun-2019" target="_blank" rel="noopener">Lihat sumber resmi Kemenkes</a>.
+            </small>
+        </p>
+    </div>`;
+}
+
+
+// MEMBUAT LIST
+
+function buatList(array) {
+    return "<ul>" +
+    array.map(item => "<li>" + item + "</li>").join("") +
+    "</ul>";
+}
+
+
+// MENGHITUNG IMT
+
+let hasilIMT = 0;
+let kategori = "";
+
+function hitungIMT(event) {
+    event.preventDefault();
+
+    const umur = Number(document.getElementById("umur").value);
+    const jk = document.getElementById("jk").value;
+    const tb = Number(document.getElementById("tb").value);
+    const bb = Number(document.getElementById("bb").value);
+
+    if (!umur || !jk || !tb || !bb ||
+        umur <= 0 || tb <= 0 || bb <= 0) {
+
+        alert("Mohon isi semua data dengan benar!");
+        return;
+    }
+
+    hasilIMT = bb / ((tb / 100) * (tb / 100));
+
+    if (hasilIMT < 18.5) {
+        kategori = "rendah";
+
+    } else if (hasilIMT < 25) {
+        kategori = "normal";
+
+    } else {
+        kategori = "berlebih";
+    }
+
+    tampilkanHasil(umur, jk);
+}
+
+
+// MENAMPILKAN HASIL
+
+function tampilkanHasil(umur, jk) {
+
+    const d = data[kategori];
+
+    const catatan = umur < 20
+    ? "Perhatian: batas kategori IMT dewasa di bawah ini hanya gambaran sederhana dan tidak dapat menentukan status gizi remaja. Penilaian remaja harus menggunakan IMT menurut umur dan jenis kelamin (IMT/U) dengan kurva pertumbuhan yang sesuai."
+    : "Klasifikasi menggunakan batas IMT dewasa.";
+
+    const html = `
+
+    <div class="result">
+
+        <center>
+
+            <div style="font-size:65px">${d.emoji}</div>
+
+            <span class="badge">YOUR IMT RESULT</span>
+
+            <h2>${d.nama}</h2>
+
+            <div class="result-value">
+                ${hasilIMT.toFixed(2)}
+            </div>
+
+            <p>Indeks Massa Tubuh (kg/m²)</p>
+
+            <p>Umur: ${umur} tahun</p>
+
+            <p>Jenis kelamin: ${jk}</p>
+
+        </center>
+
+        <hr>
+
+        <h3>📊 Visual Kategori IMT</h3>
+
+        <table border="1" cellpadding="12" width="100%">
+
+            <tr>
+                <th>IMT</th>
+                <th>Kategori</th>
+            </tr>
+
+            <tr>
+                <td><18.5</td>
+                <td>🥑 Rendah</td>
+            </tr>
+
+            <tr>
+                <td>18.5 – 24.9</td>
+                <td>🌟 Normal</td>
+            </tr>
+
+            <tr>
+                <td>≥25</td>
+                <td>🍎 Berlebih</td>
+            </tr>
+
+        </table>
+
+        <p><i>${catatan}</i></p>
+
+        <hr>
+
+        <h3>⚠️ Dampak yang Mungkin Terjadi</h3>
+        ${buatList(d.dampak)}
+
+        <hr>
+
+        <div class="recommendation-banner">
+            <span class="badge">PERSONAL HEALTH TIPS</span>
+            <h3>✨ Rekomendasi untuk Kamu</h3>
+            <p>${kategori === "rendah"
+                ? "Utamakan makan teratur dan pilih makanan padat gizi untuk mendukung kebutuhan tubuh."
+                : kategori === "normal"
+                ? "Pertahankan variasi makanan dan kebiasaan sehat yang sudah baik."
+                : "Bangun rutinitas sehat secara bertahap, tanpa melewatkan waktu makan atau diet ketat."}</p>
+        </div>
+
+        <h3>🥗 Rekomendasi Pola Makan dan Nutrisi</h3>
+        ${buatList(d.makan)}
+        ${tampilkanPanduanGizi(umur,jk,kategori)}
+
+        <hr>
+
+        <h3>🚴 Rekomendasi Aktivitas Fisik</h3>
+        ${buatList(d.olahraga)}
+
+        <hr>
+
+        <h3>🌙 Edukasi Pola Tidur dan Kebutuhan Cairan</h3>
+        ${buatList(d.tidur)}
+
+        <hr>
+
+        <center>
+
+            <h2>💚 Small Steps, Big Changes!</h2>
+
+            <p>Mulai kebiasaan sehatmu dari sekarang.</p>
+
+            <br>
+
+            <button class="main-btn"
+            onclick="showPage('home')">
+                🏠 Kembali ke Beranda
+            </button>
+
+        </center>
+
+        <hr>
+
+        <p>
+        <b>Catatan:</b> Hasil IMT bukan diagnosis medis.
+        Konsultasikan kepada tenaga kesehatan jika diperlukan.
+        </p>
+
+    </div>
+
+    `;
+
+    document.getElementById("output").innerHTML = html;
+    document.getElementById("hasilRekomendasi").innerHTML = html;
+
+    showPage("hasil");
+}
+
+
+// MINI QUIZ TEENHEALTH
+
+const pertanyaanKuis = [
+ {
+    t:"Apa fungsi utama protein bagi tubuh remaja?",
+    o:[
+        "Membantu pertumbuhan dan perbaikan jaringan",
+        "Menggantikan seluruh kebutuhan air",
+        "Membuat tubuh tidak membutuhkan tidur",
+        "Menghilangkan kebutuhan sayur dan buah"
+    ],
+    a:0,
+    e:"Protein membantu membangun dan memperbaiki jaringan tubuh, termasuk selama masa pertumbuhan."
+ },
+ {
+    t:"Manakah contoh sumber karbohidrat?",
+    o:[
+        "Nasi dan kentang",
+        "Ikan dan telur",
+        "Minyak dan mentega",
+        "Air putih dan teh tawar"
+    ],
+    a:0,
+    e:"Nasi dan kentang merupakan sumber karbohidrat yang dapat menjadi sumber energi."
+ },
+ {
+    t:"Apa prinsip Isi Piringku yang baik diterapkan saat makan?",
+    o:[
+        "Hanya makan lauk",
+        "Memenuhi piring dengan satu jenis makanan",
+        "Mengonsumsi makanan beragam dengan sayur dan buah",
+        "Menghindari semua sumber karbohidrat"
+    ],
+    a:2,
+    e:"Pola makan beragam yang mencakup makanan pokok, lauk, sayur, dan buah membantu memenuhi kebutuhan zat gizi."
+ },
+ {
+    t:"Berapa lama waktu tidur yang umumnya dianjurkan untuk remaja?",
+    o:[
+        "4–5 jam",
+        "6 jam",
+        "8–10 jam",
+        "12–14 jam"
+    ],
+    a:2,
+    e:"Remaja umumnya dianjurkan tidur sekitar 8–10 jam setiap malam."
+ },
+ {
+    t:"Apa yang sebaiknya dilakukan untuk menjaga kesehatan berdasarkan hasil IMT?",
+    o:[
+        "Melakukan diet ekstrem",
+        "Melewatkan sarapan setiap hari",
+        "Mengikuti pola makan seimbang dan aktif bergerak",
+        "Menghindari semua jenis lemak"
+    ],
+    a:2,
+    e:"Kebiasaan sehat dibangun melalui makan seimbang, aktivitas fisik, tidur cukup, dan tanpa diet ekstrem."
+ }
+];
+
+function muatKuis() {
+    const tempat = document.getElementById("quizQuestions");
+    if (!tempat) return;
+
+    tempat.innerHTML = pertanyaanKuis.map((q,i)=>`
+        <div class="quiz-question">
+            <h3>${i+1}. ${q.t}</h3>
+            ${q.o.map((pilihan,j)=>`
+                <label class="quiz-option">
+                    <input type="radio" name="q${i}" value="${j}" required style="width:auto;margin-right:8px">
+                    ${pilihan}
+                </label>
+            `).join("")}
+        </div>
+    `).join("");
+}
+
+function periksaKuis(event) {
+    event.preventDefault();
+
+    let skor = 0;
+    let ulasan = "";
+
+    pertanyaanKuis.forEach((q,i)=>{
+        const p = document.querySelector(`input[name="q${i}"]:checked`);
+
+        if (p && Number(p.value) === q.a) skor++;
+
+        ulasan += `
+            <p style="text-align:left;margin:10px 0">
+                <b>${p && Number(p.value) === q.a ? "✅ Tepat!" : "💡 Belum tepat."}</b>
+                ${q.e}
+            </p>
+        `;
+    });
+
+    const hasil = document.getElementById("quizResult");
+    hasil.style.display = "block";
+
+    hasil.innerHTML = `
+        <h2>🎉 Skor Kamu: ${skor}/${pertanyaanKuis.length}</h2>
+        <p>${
+            skor === 5
+            ? "Hebat! Pengetahuan gizimu keren!"
+            : skor >= 3
+            ? "Bagus! Terus tingkatkan pengetahuanmu."
+            : "Jangan menyerah! Yuk, pelajari lagi informasi di TeenHealth."
+        }</p>
+        <hr style="margin:15px 0;border:0;border-top:1px solid #e5d4ad">
+        ${ulasan}
+    `;
+
+    hasil.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
+function resetKuis() {
+    document.getElementById("quizForm").reset();
+
+    const h = document.getElementById("quizResult");
+    h.style.display = "none";
+    h.innerHTML = "";
+}
+
+document.addEventListener("DOMContentLoaded",muatKuis);
+
+</script>
+
+</body>
+</html>
